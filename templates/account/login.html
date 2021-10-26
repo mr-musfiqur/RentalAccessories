@@ -1,0 +1,47 @@
+{% extends 'account/base.html' %}
+
+
+{% block title %}
+    BikeAccessoriesShop - Log in or Sign up
+{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <script>
+        document.getElementById('top-nav').innerHTML="";
+    </script>
+
+
+<style>
+   #login {
+        background-color: lightblue;
+        box-shadow: 10px 10px 18px lightblue;
+        margin-top: 10%;
+        padding-left: 25%;
+        padding-right: 25%;
+        padding-top: 5%;
+        padding-bottom: 5%
+    }
+
+</style>
+
+    <div  id="login" >
+       <form method="POST">
+           {% csrf_token %}
+           <fieldset class="form-group">
+              {{ form|crispy }}
+          </fieldset>
+    <button class="submit form-group btn btn-outline-info">
+        Sign In
+    </button>
+
+       </form>
+    </div>
+
+
+
+    <div class="border-top pt-3">
+        Don't have an account? <a href="{% url 'register' %}">Sign up</a> here.
+    </div>
+
+{% endblock %}

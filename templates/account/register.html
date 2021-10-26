@@ -1,0 +1,68 @@
+{% extends 'account/base.html' %}
+
+{% load static %}
+{% block title %}
+        BikeAccessoriesShop - Log in or Sign up
+{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <script>
+        document.getElementById('top-nav').innerHTML="";
+    </script>
+
+     <style>
+         body{
+            background-image: url({% static 'regBack.jpg' %});
+         }
+         label {
+            color: bisque;
+            display: inline-block;
+            margin-bottom: .5rem;
+        }
+        #register {
+
+            background-color: transparent;
+            box-shadow: 10px 10px 10px rgba(0,100,100,0.5);
+            margin-top: 10%;
+            margin-bottom: 10%;
+            padding-left: 25%;
+            padding-right: 25%;
+            padding-top: 5%;
+            padding-bottom: 5%
+        }
+        .text-muted {
+            color: #ffffff!important;
+        }
+        .pt-3, .py-3 {
+            color: beige;
+            padding-top: 1rem!important;
+        }
+        a {
+            color: #d6fd00;
+            text-decoration: none;
+            background-color: transparent;
+        }
+    </style>
+
+
+
+    <div id="register">
+       <form action="{% url 'register' %}" method="POST">
+           {% csrf_token %}
+           <fieldset class="form-group">
+              {{ form|crispy }}
+          </fieldset>
+           <br>
+    <button class="submit form-group btn btn-outline-info">
+        Sign Up
+    </button>
+
+       </form>
+     <div class="border-top pt-3">
+        Already have an account? <a href="{% url 'login' %}">Log in</a> here.
+     </div>
+
+    </div>
+
+{% endblock %}
